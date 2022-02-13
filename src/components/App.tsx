@@ -18,13 +18,13 @@ const App = () => {
   const [countryData, setCountryData] = useState<CountryData>();
   const [ip, setIP] = useState<string>("");
   const [apiLink, setApiLink] = useState<string>("");
-  const [inputIP, setInputIP] = useState<string>("");
+  const [userValue, setUserValue] = useState<string>("");
 
   useEffect(() => {
     setLoading(true);
     (async (): Promise<void> => {
       // GET THE USER IP FROM getUserIP FUNCTION
-      const ip = await getUserIP();
+      const ip: string = await getUserIP();
       // SET CURRENT IP TO THE STATE
       setIP(ip);
       // UPDATE MY API LINK
@@ -63,25 +63,25 @@ const App = () => {
     })();
   }, [ip, apiLink]);
 
-  const handleUserInput = (e: any) => {
-    // UPDATE THE STATE ON INPUT ANY LETTER
-    setInputIP(e.target.value);
+  const userInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const value = e.target.value;
+    if (value.match(/[^\d.]|\.(?=\.)/g)) return;
+    if (userValue.length === 0 && value === ".") return;
+    setUserValue(value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     // UPDATE THE IP
-    setIP(inputIP);
-    // MAKE THE INPUT EMPTY
-    setInputIP("");
+    setIP(userValue);
   };
 
   return (
     <>
       <Header
-        inputIP={inputIP}
         handleSubmit={handleSubmit}
-        handleUserInput={handleUserInput}
+        userInput={userInput}
+        userValue={userValue}
       />
       {loading ? (
         <Oval color="black" height={80} width={80} />

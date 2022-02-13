@@ -1,4 +1,4 @@
-const Error = () => {
+const Error = ({ countryData }: any) => {
   return (
     <div className="country-info" style={{ display: "flex" }}>
       <h2
@@ -10,7 +10,7 @@ const Error = () => {
           paddingBottom: "9px",
         }}
       >
-        Something Went Wrong
+        Something Went Wrong Enter a Valid IP and Try again
       </h2>
     </div>
   );

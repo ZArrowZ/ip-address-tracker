@@ -2,20 +2,19 @@ import "./header.css";
 import ArrowIcon from "../../assets/icon-arrow.svg";
 import { HeaderProps } from "../../interfaces";
 
-const Header = ({ inputIP, handleSubmit, handleUserInput }: HeaderProps) => {
+const Header = ({ handleSubmit, userInput, userValue }: HeaderProps) => {
   return (
     <header>
       <h1>IP Address Tracker</h1>
       <form onSubmit={(e) => handleSubmit(e)} className="form-container">
         <input
           type="text"
-          onChange={(e) => handleUserInput(e)}
-          value={inputIP}
+          onChange={(e) => userInput(e)}
+          value={userValue}
           placeholder="Search for any IP address or domain"
-          pattern="[0-9]"
         ></input>
 
-        <button>
+        <button type="submit">
           <img src={ArrowIcon} alt="search" />
         </button>
       </form>

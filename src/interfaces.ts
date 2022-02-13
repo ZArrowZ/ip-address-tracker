@@ -29,7 +29,7 @@ export interface MapProps {
 }
 
 export interface HeaderProps {
-  inputIP: string;
   handleSubmit: FormEventHandler;
-  handleUserInput: InputChangeEventHandler;
+  userInput: InputChangeEventHandler;
+  userValue: string;
 }
