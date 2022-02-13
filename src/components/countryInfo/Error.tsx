@@ -1,4 +1,4 @@
-const Error = ({ countryData }: any) => {
+const Error = () => {
   return (
     <div className="country-info" style={{ display: "flex" }}>
       <h2

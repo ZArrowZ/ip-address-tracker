@@ -44,15 +44,12 @@ const App = () => {
     (async (): Promise<void> => {
       // GET THE DATA FROM THE getCountryDetails FUNCTION AND PASS API LINK TO IT
       const countryData = await getCountryDetails(apiLink);
-      // SET CURRENT COUNTRY TO THE STATE
-      if (countryData && countryData.Response) {
-        return;
-      } else {
-        setCountryData(countryData);
-        if (countryData && countryData.location) {
-          setLat(countryData.location.lat);
-          setLng(countryData.location.lng);
-        }
+      // SET CURRENT COUNTRY TO STATE
+      setCountryData(countryData);
+      // SET MAP POSITION TO STATE
+      if (countryData !== undefined) {
+        setLat(countryData.location.lat);
+        setLng(countryData.location.lng);
       }
       // UPDATE API LINK
       setApiLink(
