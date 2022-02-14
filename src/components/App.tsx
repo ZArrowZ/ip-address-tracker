@@ -9,7 +9,7 @@ import Map from "./map";
 import CountryInfo from "./countryInfo";
 import Error from "./countryInfo/Error";
 
-const API_KEY: string = "at_7R8wovTlaqM2seYpvwaoP3T6qKQTj";
+const API_KEY: string = "at_m6UyA4GZOe3qHb0w5Q6i9bFlJr5Oc";
 
 const App = () => {
   const [lat, setLat] = useState<number>(0);
@@ -22,42 +22,34 @@ const App = () => {
 
   useEffect(() => {
     setLoading(true);
-    (async (): Promise<void> => {
-      // GET THE USER IP FROM getUserIP FUNCTION
+    const fetchUserIP = async (): Promise<void> => {
       const ip: string = await getUserIP();
-      // SET CURRENT IP TO THE STATE
       setIP(ip);
-      // UPDATE MY API LINK
       setApiLink(
         `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}&ipAddress=${ip}`
       );
-      // SET LOADING TO FALSE
       setLoading(false);
-    })();
+    };
+
+    fetchUserIP();
   }, []);
 
   useEffect(() => {
     setLoading(true);
-    // IF THE USER DIDN'T INPUT ANY THING
     if (apiLink === "") return;
-    // GET THE COUNTRY DATA
-    (async (): Promise<void> => {
-      // GET THE DATA FROM THE getCountryDetails FUNCTION AND PASS API LINK TO IT
+    const fetchCountryData = async (): Promise<void> => {
       const countryData = await getCountryDetails(apiLink);
-      // SET CURRENT COUNTRY TO STATE
       setCountryData(countryData);
-      // SET MAP POSITION TO STATE
       if (countryData !== undefined) {
         setLat(countryData.location.lat);
         setLng(countryData.location.lng);
       }
-      // UPDATE API LINK
       setApiLink(
         `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}&ipAddress=${ip}`
       );
-      // SET LOADING TO FALSE
       setLoading(false);
-    })();
+    };
+    fetchCountryData();
   }, [ip, apiLink]);
 
   const userInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -69,7 +61,6 @@ const App = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    // UPDATE THE IP
     setIP(userValue);
   };
 
