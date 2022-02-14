@@ -6,6 +6,7 @@
 }
 span {
   color: var(--dark-gray);
+  font-weight: bold;
 }
 .country-info {
   position: absolute;
@@ -23,8 +24,9 @@ span {
   border-radius: 10px;
   margin: 0 24px;
 }
+
 .country-info h2 {
-  margin-top: 0px;
+  margin-top: 8px;
 }
 .info_container {
   position: relative;
