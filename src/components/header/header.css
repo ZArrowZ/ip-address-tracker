@@ -65,13 +65,7 @@ div[data-testid="oval-loading"] {
   align-items: center;
   margin: 5rem 0;
 }
-.map {
-  width: 100%;
-  height: 70vh;
-}
-.map-container {
-  height: 100%;
-}
+
 @media screen and (max-width: 575px) {
   header h1 {
     font-size: 24px;

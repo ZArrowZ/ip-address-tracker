@@ -1,5 +1,3 @@
-import { InputChangeEventHandler, FormEventHandler } from "./types";
-
 export interface CountryData {
   as: {
     asn: number;
@@ -24,12 +22,11 @@ export interface CountryData {
 }
 
 export interface MapProps {
-  lat: number;
-  lng: number;
+  mapPosition: number[];
 }
 
 export interface HeaderProps {
-  handleSubmit: FormEventHandler;
-  userInput: InputChangeEventHandler;
+  handleSubmit: React.FormEventHandler<HTMLFormElement>;
+  userInput: React.ChangeEventHandler<HTMLInputElement>;
   userValue: string;
 }
