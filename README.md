@@ -34,7 +34,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Add solution URL here](https://github.com/ZArrowZ/ip-address-tracker)
-- Live Site URL: [Add live site URL here](https://serene-jones-d1c20f.netlify.app/)
+- Live Site URL: [Add live site URL here](https://ipaddresstrackerreactjstypescript.netlify.app/)
 
 ## My process
 
